@@ -237,7 +237,7 @@
 
     const saveData = navigator.connection && navigator.connection.saveData;
     dlog('reducedActive=' + reducedActive() + ' saveData=' + !!saveData + ' isTouch=' + isTouch + ' width=' + window.innerWidth);
-    if (reducedActive() || saveData || isTouch || window.innerWidth < 900) { dlog('SKIP: gated out above'); return; }
+    if (reducedActive() || saveData || window.innerWidth < 900) { dlog('SKIP: gated out above'); return; }
 
     let canWebGL = false;
     let webglErr = '';
