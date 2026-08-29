@@ -37,7 +37,7 @@
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isNarrow ? 1.5 : 2));
 
   scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+  camera = new THREE.PerspectiveCamera(40, 1, 0.1, 100);
   camera.position.set(5.6, 4.6, 6.4);
   camera.lookAt(0, 0.6, 0);
 
@@ -103,27 +103,91 @@
   makeWall(5.6, WH, 0.1, -2.8, 0, Math.PI / 2, 320);
   makeWall(5.6, WH, 0.1, 2.8, 0, Math.PI / 2, 490);
 
-  // counter
-  const counter = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.9, 0.6), new THREE.MeshStandardMaterial({ color: COLOR.brass, roughness: 0.4, metalness: 0.35 }));
-  counter.position.set(1.7, 0, -2.35);
-  group.add(counter);
-  addRise(counter, 0.9, 1500, 700);
+  const shadowMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.28 });
+  function addContactShadow(parent, radius, y) {
+    const disc = new THREE.Mesh(new THREE.CircleGeometry(radius, 20), shadowMat);
+    disc.rotation.x = -Math.PI / 2;
+    disc.position.y = y || 0.011;
+    parent.add(disc);
+    return disc;
+  }
 
-  // tables
-  function makeTable(x, z, start) {
+  // counter: base cabinet + brass trim rim + back shelf with bottles
+  function makeCounter(x, z, start) {
+    const c = new THREE.Group();
+    const base = new THREE.Mesh(new THREE.BoxGeometry(2.2, 0.85, 0.6), new THREE.MeshStandardMaterial({ color: COLOR.steel, roughness: 0.7 }));
+    base.position.y = 0.425;
+    const trim = new THREE.Mesh(new THREE.BoxGeometry(2.26, 0.05, 0.66), new THREE.MeshStandardMaterial({ color: COLOR.brass, roughness: 0.35, metalness: 0.5 }));
+    trim.position.y = 0.875;
+    c.add(base, trim);
+    const shelf = new THREE.Mesh(new THREE.BoxGeometry(2.0, 0.04, 0.18), new THREE.MeshStandardMaterial({ color: COLOR.wood, roughness: 0.6 }));
+    shelf.position.set(0, 1.05, -0.18);
+    c.add(shelf);
+    for (let i = 0; i < 4; i++) {
+      const bottle = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.045, 0.22, 8), new THREE.MeshStandardMaterial({ color: 0x3a4a3a, roughness: 0.3, metalness: 0.1, transparent: true, opacity: 0.85 }));
+      bottle.position.set(-0.7 + i * 0.42, 1.18, -0.18);
+      c.add(bottle);
+      addPop(bottle, start + 750 + i * 60, 350);
+    }
+    c.position.set(x, 0, z);
+    group.add(c);
+    [base, trim, shelf].forEach(m => { addRise(m, m.geometry.parameters.height, start, 700); });
+  }
+  makeCounter(1.7, -2.35, 1500);
+
+  // chairs
+  function makeChair(x, z, rotY, start) {
+    const ch = new THREE.Group();
+    const seatMat = new THREE.MeshStandardMaterial({ color: COLOR.wood, roughness: 0.65 });
+    const legMat = new THREE.MeshStandardMaterial({ color: COLOR.steel, roughness: 0.4, metalness: 0.5 });
+    const seat = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.045, 0.34), seatMat);
+    seat.position.y = 0.42;
+    ch.add(seat);
+    const back = new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.36, 0.04), seatMat);
+    back.position.set(0, 0.61, -0.15);
+    ch.add(back);
+    const legPositions = [[-0.13, -0.13], [0.13, -0.13], [-0.13, 0.13], [0.13, 0.13]];
+    legPositions.forEach(([lx, lz]) => {
+      const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.42, 6), legMat);
+      leg.position.set(lx, 0.21, lz);
+      ch.add(leg);
+    });
+    ch.position.set(x, 0, z);
+    ch.rotation.y = rotY;
+    group.add(ch);
+    addPop(ch, start, 500);
+  }
+
+  // tables — round top with rim, 4 slim legs, contact shadow, chairs around
+  function makeTable(x, z, start, withChairs) {
     const t = new THREE.Group();
-    const top = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.08, 16), new THREE.MeshStandardMaterial({ color: COLOR.wood, roughness: 0.6 }));
-    top.position.y = 0.62;
-    const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.6, 8), new THREE.MeshStandardMaterial({ color: COLOR.steel, roughness: 0.5, metalness: 0.4 }));
-    leg.position.y = 0.3;
-    t.add(top, leg);
+    const topMat = new THREE.MeshStandardMaterial({ color: COLOR.wood, roughness: 0.55 });
+    const legMat = new THREE.MeshStandardMaterial({ color: COLOR.steel, roughness: 0.4, metalness: 0.5 });
+    const top = new THREE.Mesh(new THREE.CylinderGeometry(0.44, 0.44, 0.05, 20), topMat);
+    top.position.y = 0.72;
+    const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.44, 0.44, 0.02, 20), new THREE.MeshStandardMaterial({ color: COLOR.brass, roughness: 0.4, metalness: 0.4 }));
+    rim.position.y = 0.745;
+    t.add(top, rim);
+    const legR = 0.32;
+    for (let i = 0; i < 3; i++) {
+      const ang = (i / 3) * Math.PI * 2;
+      const leg = new THREE.Mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.68, 6), legMat);
+      leg.position.set(Math.cos(ang) * legR, 0.36, Math.sin(ang) * legR);
+      t.add(leg);
+    }
+    addContactShadow(t, 0.5);
     t.position.set(x, 0, z);
     group.add(t);
     addPop(t, start, 550);
+
+    if (withChairs) {
+      makeChair(x + 0.66, z, -Math.PI / 2, start + 150);
+      makeChair(x - 0.66, z, Math.PI / 2, start + 250);
+    }
   }
-  makeTable(-1.5, 1.2, 1900);
-  makeTable(0.4, 1.6, 2100);
-  if (!isNarrow) makeTable(1.9, 0.4, 2300);
+  makeTable(-1.5, 1.2, 1900, true);
+  makeTable(0.4, 1.75, 2100, true);
+  if (!isNarrow) makeTable(2.05, 0.35, 2300, false);
 
   // pendant lights
   function makePendant(x, z, start) {
@@ -136,10 +200,10 @@
     addEmissive(fixture, 1.6, start, 900);
     addLightUp(pl, x === 0.4 ? 1.1 : 1.4, start, 900);
   }
-  makePendant(-1.5, 1.2, 2600);
-  makePendant(0.4, 1.6, 2750);
+  makePendant(-1.5, 1.2, 2900);
+  makePendant(0.4, 1.75, 3050);
 
-  const totalConstructionMs = 3800;
+  const totalConstructionMs = 4100;
 
   function resize() {
     const rect = canvas.getBoundingClientRect();
