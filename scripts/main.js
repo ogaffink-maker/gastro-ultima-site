@@ -220,30 +220,56 @@
      static SVG blueprint above on any unsupported/failed case
   --------------------------------------------------------- */
   (function loadHero3D() {
+    const DEBUG = new URLSearchParams(location.search).has('debug3d');
+    let panel;
+    function dlog(msg) {
+      if (!DEBUG) return;
+      if (!panel) {
+        panel = document.createElement('div');
+        panel.id = 'gu-debug';
+        panel.style.cssText = 'position:fixed;bottom:8px;left:8px;z-index:99999;background:rgba(0,0,0,0.88);color:#7CFC7C;font:11px/1.5 monospace;padding:10px 12px;border-radius:8px;max-width:380px;white-space:pre-wrap;pointer-events:none;';
+        document.body.appendChild(panel);
+      }
+      panel.textContent += msg + '\n';
+      console.log('[hero3d]', msg);
+    }
+    window.__guDlog = dlog;
+
     const saveData = navigator.connection && navigator.connection.saveData;
-    if (reducedActive() || saveData || isTouch || window.innerWidth < 900) return;
+    dlog('reducedActive=' + reducedActive() + ' saveData=' + !!saveData + ' isTouch=' + isTouch + ' width=' + window.innerWidth);
+    if (reducedActive() || saveData || isTouch || window.innerWidth < 900) { dlog('SKIP: gated out above'); return; }
 
     let canWebGL = false;
+    let webglErr = '';
     try {
       const c = document.createElement('canvas');
-      canWebGL = !!(c.getContext('webgl2') || c.getContext('webgl'));
-    } catch (e) { canWebGL = false; }
-    if (!canWebGL) return;
+      const gl2 = c.getContext('webgl2');
+      const gl1 = !gl2 && c.getContext('webgl');
+      canWebGL = !!(gl2 || gl1);
+      dlog('webgl2=' + !!gl2 + ' webgl1=' + !!gl1);
+    } catch (e) { canWebGL = false; webglErr = e.message; dlog('webgl getContext threw: ' + e.message); }
+    if (!canWebGL) { dlog('SKIP: no WebGL context available (browser/GPU blocked or disabled it)'); return; }
 
     function inject(src) {
       return new Promise((resolve, reject) => {
         const s = document.createElement('script');
         s.src = src;
-        s.onload = resolve;
-        s.onerror = reject;
+        s.onload = () => { dlog('loaded: ' + src); resolve(); };
+        s.onerror = () => { dlog('FAILED to load: ' + src); reject(new Error('load failed: ' + src)); };
         document.body.appendChild(s);
       });
     }
 
     function start() {
+      dlog('starting load sequence...');
       inject('scripts/vendor/three.min.js')
         .then(() => inject('scripts/hero3d.js'))
-        .catch(() => { /* stays on SVG fallback */ });
+        .then(() => {
+          setTimeout(() => {
+            dlog('THREE defined=' + (typeof window.THREE) + ' hero3d-active=' + document.querySelector('.hero').classList.contains('hero-3d-active'));
+          }, 500);
+        })
+        .catch((e) => { dlog('CAUGHT: ' + e.message + ' — staying on SVG fallback'); });
     }
 
     if (document.readyState === 'complete') {

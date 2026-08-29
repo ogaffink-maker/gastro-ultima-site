@@ -1,10 +1,11 @@
 (() => {
   'use strict';
-  if (!window.THREE) return;
+  const dlog = window.__guDlog || function () {};
+  if (!window.THREE) { dlog('hero3d.js: window.THREE missing'); return; }
 
   const hero = document.querySelector('.hero');
   const canvas = document.getElementById('heroCanvas');
-  if (!hero || !canvas) return;
+  if (!hero || !canvas) { dlog('hero3d.js: hero or canvas element missing'); return; }
 
   const isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
   const isNarrow = window.innerWidth < 768;
@@ -25,12 +26,13 @@
 
   try {
     const ctxTest = canvas.getContext('webgl2') || canvas.getContext('webgl');
-    if (!ctxTest) return;
-  } catch (e) { return; }
+    if (!ctxTest) { dlog('hero3d.js: canvas.getContext returned null on real canvas'); return; }
+  } catch (e) { dlog('hero3d.js: canvas.getContext threw: ' + e.message); return; }
 
   try {
     renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'low-power' });
-  } catch (e) { return; }
+    dlog('hero3d.js: WebGLRenderer created OK');
+  } catch (e) { dlog('hero3d.js: WebGLRenderer creation threw: ' + e.message); return; }
 
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, isNarrow ? 1.5 : 2));
 
