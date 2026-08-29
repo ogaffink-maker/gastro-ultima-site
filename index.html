@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gastro Ultima — ресторанный консалтинг полного цикла</title>
+<meta name="description" content="Gastro Ultima — открытие заведений под ключ, оснащение и поставки оборудования из Китая, аналитика рынка, технологическое проектирование, операционный консалтинг.">
+<meta name="theme-color" content="#121212">
+
+<link rel="icon" href="assets/img/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400..900&family=Manrope:wght@400..800&family=JetBrains+Mono:wght@400..700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+
+<!-- decorative noise overlay -->
+<div class="noise" aria-hidden="true"></div>
+
+<!-- custom cursor (desktop only, injected/controlled by JS) -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a href="#top" class="brand" aria-label="Gastro Ultima — на главную">
+      <img src="assets/img/logo.jpg" alt="Gastro Ultima — ресторанный консалтинг" class="brand-logo">
+      <span class="brand-word">gastro <em>ultima</em><span class="brand-dot">.</span></span>
+    </a>
+
+    <nav class="main-nav" id="mainNav" aria-label="Основная навигация">
+      <ul>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#sourcing">Оснащение</a></li>
+        <li><a href="#process">Процесс</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="#contact" class="btn btn-primary btn-sm">Обсудить проект</a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <nav aria-label="Мобильная навигация">
+    <ul>
+      <li style="--i:0"><a href="#services">Услуги</a></li>
+      <li style="--i:1"><a href="#sourcing">Оснащение</a></li>
+      <li style="--i:2"><a href="#process">Процесс</a></li>
+      <li style="--i:3"><a href="#faq">FAQ</a></li>
+      <li style="--i:4"><a href="#contact">Контакты</a></li>
+    </ul>
+  </nav>
+  <a href="#contact" class="btn btn-primary btn-lg mobile-menu-cta">Обсудить проект</a>
+</div>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero-aura" aria-hidden="true"><span></span><span></span><span></span></div>
+    <div class="hero-particles" id="heroParticles" aria-hidden="true"></div>
+    <div class="hero-bg" aria-hidden="true">
+      <canvas id="heroCanvas" class="hero-canvas"></canvas>
+      <svg id="blueprint" class="blueprint" viewBox="0 0 800 560" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Изометрический чертёж плана заведения, постепенно прорисовывающийся">
+        <!-- floor outline -->
+        <path class="bp-line bp-outline" d="M400 60 L680 210 L680 400 L400 500 L120 400 L120 210 Z" />
+        <!-- interior dividing lines -->
+        <path class="bp-line bp-inner" d="M400 60 L400 260" />
+        <path class="bp-line bp-inner" d="M120 210 L400 260 L680 210" />
+        <path class="bp-line bp-inner" d="M400 260 L400 500" />
+        <path class="bp-line bp-inner" d="M260 133 L260 333" />
+        <path class="bp-line bp-inner" d="M540 133 L540 333" />
+        <!-- zone markers -->
+        <circle class="bp-node" cx="250" cy="180" r="4" />
+        <circle class="bp-node" cx="520" cy="180" r="4" />
+        <circle class="bp-node" cx="400" cy="380" r="4" />
+        <circle class="bp-node" cx="220" cy="330" r="4" />
+        <!-- dimension lines -->
+        <path class="bp-dim" d="M110 210 L110 400" />
+        <path class="bp-dim" d="M690 210 L690 400" />
+      </svg>
+    </div>
+
+    <div class="wrap hero-inner">
+      <p class="eyebrow reveal-up">Ресторанный консалтинг полного цикла</p>
+      <h1 class="hero-title">
+        <span class="line reveal-up" style="--d:1">Открываем рестораны</span>
+        <span class="line reveal-up" style="--d:2">под <em>ключ</em>.</span>
+        <span class="line reveal-up" style="--d:3">От чертежа до первого гостя.</span>
+      </h1>
+      <p class="hero-sub reveal-up" style="--d:4">Концепция, оснащение и поставки из Китая, технологическое проектирование и операционный запуск — в одних руках, с инженерной точностью.</p>
+
+      <div class="hero-cta reveal-up" style="--d:5">
+        <a href="#contact" class="btn btn-primary btn-lg">Обсудить проект</a>
+        <a href="#services" class="btn btn-ghost btn-lg">Как мы работаем</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="scroll-line"></span>
+      <span class="scroll-text">Листайте</span>
+    </div>
+  </section>
+
+  <!-- ============ TRUST NUMBERS ============ -->
+  <section class="stats" aria-label="Показатели компании">
+    <div class="wrap stats-grid">
+      <div class="stat reveal-up">
+        <span class="stat-num" data-count="40" data-suffix="+">0</span>
+        <span class="stat-label">запущенных проектов</span>
+      </div>
+      <div class="stat reveal-up" style="--d:1">
+        <span class="stat-num" data-count="9">0</span>
+        <span class="stat-label">лет на рынке</span>
+      </div>
+      <div class="stat reveal-up" style="--d:2">
+        <span class="stat-num" data-count="6">0</span>
+        <span class="stat-label">городов присутствия</span>
+      </div>
+      <div class="stat reveal-up" style="--d:3">
+        <span class="stat-num" data-count="12000" data-suffix=" м²">0</span>
+        <span class="stat-label">оснащённой площади</span>
+      </div>
+    </div>
+    <p class="stats-note reveal-up">Цифры демонстрационные — заменяются на подтверждённые показатели заказчика.</p>
+  </section>
+
+  <!-- ============ SERVICES (bento) ============ -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow reveal-up">Что мы делаем</p>
+        <h2 class="reveal-up">Пять направлений. <br>Один партнёр.</h2>
+      </div>
+
+      <div class="bento reveal-group">
+        <article class="bento-card bento-card--lg reveal-up spotlight">
+          <div class="bento-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M6 24 L24 8 L42 24 M10 22 V40 H38 V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 40 V29 H29 V40" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>Открытие под ключ</h3>
+          <p>От концепции до запуска операционной деятельности — полный цикл в одних руках.</p>
+          <ul>
+            <li>Концепция и позиционирование</li>
+            <li>Проектирование и оснащение</li>
+            <li>Запуск и вывод на показатели</li>
+          </ul>
+        </article>
+
+        <article class="bento-card reveal-up spotlight">
+          <div class="bento-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="6" y="14" width="36" height="24" rx="2" stroke="currentColor" stroke-width="2"/><path d="M6 22 H42 M16 14 V8 H32 V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Оснащение и поставки</h3>
+          <p>Оборудование, инвентарь и мебель напрямую с фабрик Китая.</p>
+        </article>
+
+        <article class="bento-card reveal-up spotlight">
+          <div class="bento-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><path d="M8 38 V22 M18 38 V12 M28 38 V26 M38 38 V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 40 H42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Аналитика рынка</h3>
+          <p>Исследование локации, конкурентный анализ, финансовая модель.</p>
+        </article>
+
+        <article class="bento-card reveal-up spotlight">
+          <div class="bento-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="32" height="32" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 20 H40 M20 20 V40" stroke="currentColor" stroke-width="2"/></svg>
+          </div>
+          <h3>Технологическое проектирование</h3>
+          <p>Планировка цехов, инженерные разделы, соответствие СанПиН.</p>
+        </article>
+
+        <article class="bento-card reveal-up spotlight">
+          <div class="bento-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="17" r="7" stroke="currentColor" stroke-width="2"/><path d="M10 40 C10 30 16 26 24 26 C32 26 38 30 38 40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <h3>Операционный консалтинг</h3>
+          <p>Меню-инжиниринг, фудкост, стандарты сервиса, найм и обучение.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOURCING / CHINA ============ -->
+  <section class="sourcing" id="sourcing">
+    <div class="wrap">
+      <div class="section-head section-head--light">
+        <p class="eyebrow reveal-up">Ключевой дифференциатор</p>
+        <h2 class="reveal-up">Оснащение напрямую с фабрик Китая</h2>
+        <p class="reveal-up section-lead">Прямые контракты, контроль качества на производстве, логистика, растаможка, монтаж и пусконаладка — без посредников и переплат.</p>
+      </div>
+
+      <div class="rail-wrap reveal-up">
+        <ul class="rail" id="sourcingRail">
+          <li class="rail-card spotlight spotlight--dark"><span class="rail-num">01</span><h3>Тепловое оборудование</h3></li>
+          <li class="rail-card spotlight spotlight--dark"><span class="rail-num">02</span><h3>Холодильное оборудование</h3></li>
+          <li class="rail-card spotlight spotlight--dark"><span class="rail-num">03</span><h3>Нейтральное оборудование</h3></li>
+          <li class="rail-card spotlight spotlight--dark"><span class="rail-num">04</span><h3>Посуда и инвентарь</h3></li>
+          <li class="rail-card spotlight spotlight--dark"><span class="rail-num">05</span><h3>Мебель и текстиль</h3></li>
+          <li class="rail-card spotlight spotlight--dark"><span class="rail-num">06</span><h3>Барное оборудование</h3></li>
+          <li class="rail-card spotlight spotlight--dark"><span class="rail-num">07</span><h3>POS и автоматизация</h3></li>
+        </ul>
+      </div>
+
+      <ol class="process-line reveal-group">
+        <li class="reveal-up">Подбор</li>
+        <li class="reveal-up">Спецификация</li>
+        <li class="reveal-up">Контроль на фабрике</li>
+        <li class="reveal-up">Логистика</li>
+        <li class="reveal-up">Растаможка</li>
+        <li class="reveal-up">Монтаж и ПНР</li>
+      </ol>
+
+      <a href="#contact" class="btn btn-primary reveal-up">Запросить спецификацию</a>
+
+      <div class="downloads reveal-up">
+        <p class="downloads-title">Каталоги для скачивания</p>
+
+        <a class="download-flagship spotlight spotlight--dark" href="assets/catalogs/gastro-ultima-catalog-2026.pdf" download="Каталог оборудования Gastro Ultima 2026.pdf">
+          <span class="dl-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 19h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="dl-text">
+            <strong>Каталог оборудования Gastro Ultima 2026</strong>
+            <span>Полный каталог: тепловое, холодильное, барное и нейтральное оборудование, посуда и инвентарь · 35,4 МБ</span>
+          </span>
+        </a>
+
+        <div class="download-groups">
+          <details class="download-group spotlight spotlight--dark">
+            <summary>Посуда и керамика <span class="dl-count">12</span></summary>
+            <ul class="download-list">
+              <li><a href="assets/catalogs/tableware-ceramics-grey-handpainted.pdf" download>Посуда — керамика, серия «Серый, ручная роспись»<span>0,3 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-ceramics-purple-woodfired.pdf" download>Посуда — керамика, серия «Дровяной обжиг, фиолетовый»<span>0,4 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-ceramics-stone-texture.pdf" download>Посуда — керамика, серия «Каменная фактура»<span>1,6 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-ceramics-western-kitchen.pdf" download>Посуда — керамика для западной кухни<span>28,3 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-ceramics-sizes-1.pdf" download>Посуда — керамика, размерная таблица (1)<span>0,2 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-ceramics-sizes-2.pdf" download>Посуда — керамика, размерная таблица (2)<span>0,2 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-glass-plates-bowls.pdf" download>Посуда — стеклянные тарелки и салатники<span>8,5 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-glossy-series-price.pdf" download>Посуда — глянцевая серия, прайс-каталог<span>0,4 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-western-kitchen-series.pdf" download>Посуда — серия для западной кухни<span>1,0 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-ceramics-mensha-series.pdf" download>Посуда — керамика, серия «Мэнша»<span>11,2 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-storage-containers-pc.pdf" download>Посуда — небьющиеся контейнеры для хранения (PC-пластик)<span>60,7 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-stainless-steel-trays.pdf" download>Посуда — металлические подносы и тарелки (нержавеющая сталь)<span>0,6 МБ</span></a></li>
+            </ul>
+          </details>
+
+          <details class="download-group spotlight spotlight--dark">
+            <summary>Стекло и барная посуда <span class="dl-count">7</span></summary>
+            <ul class="download-list">
+              <li><a href="assets/catalogs/bar-arcoroc-tempered-glass.pdf" download>Бар — закалённые стаканы ARCOROC<span>1,4 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-luminarc-2025.pdf" download>Стекло и посуда — Luminarc, каталог 2025<span>6,8 МБ</span></a></li>
+              <li><a href="assets/catalogs/bar-decanters-carafes.pdf" download>Бар — графины и декантеры, каталог<span>4,7 МБ</span></a></li>
+              <li><a href="assets/catalogs/tableware-glass-price-catalog.pdf" download>Посуда — стекло, прайс-каталог<span>0,4 МБ</span></a></li>
+              <li><a href="assets/catalogs/glassware-cups-catalog.pdf" download>Стекло — стаканы, каталог<span>1,3 МБ</span></a></li>
+              <li><a href="assets/catalogs/glassware-green-apple-assortment.pdf" download>Стекло — каталог ассортимента (графины, кружки)<span>38,8 МБ</span></a></li>
+              <li><a href="assets/catalogs/glassware-korade-wine-glasses.pdf" download>Стекло — бокалы для вина<span>30,7 МБ</span></a></li>
+            </ul>
+          </details>
+
+          <details class="download-group spotlight spotlight--dark">
+            <summary>Столовые приборы <span class="dl-count">3</span></summary>
+            <ul class="download-list">
+              <li><a href="assets/catalogs/cutlery-series-catalog.pdf" download>Столовые приборы — каталог серии<span>68,6 МБ</span></a></li>
+              <li><a href="assets/catalogs/cutlery-stainless-steel-series.pdf" download>Столовые приборы — нержавеющая сталь, серия<span>3,3 МБ</span></a></li>
+              <li><a href="assets/catalogs/cutlery-series-photo-catalog.pdf" download>Столовые приборы — серия (фотокаталог)<span>5,1 МБ</span></a></li>
+            </ul>
+          </details>
+
+          <details class="download-group spotlight spotlight--dark">
+            <summary>Мебель <span class="dl-count">1</span></summary>
+            <ul class="download-list">
+              <li><a href="assets/catalogs/furniture-dining-chairs-catalog.pdf" download>Мебель — каталог обеденных стульев<span>14,2 МБ</span></a></li>
+            </ul>
+          </details>
+        </div>
+
+        <a class="download-flagship download-flagship--doc spotlight spotlight--dark" href="assets/documents/Dogovor_poruchenia_shablon_GU.pdf" download="Договор поручения — типовой шаблон Gastro Ultima.pdf">
+          <span class="dl-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3h7l5 5v13H7V3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v5h5" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9.5 13h5M9.5 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="dl-text">
+            <strong>Типовой договор поручения на закупку из Китая</strong>
+            <span>Унифицированный шаблон: условия, инспекция, логистика, ответственность сторон — для любой поставки оборудования, мебели и инвентаря · PDF</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow reveal-up">Как мы работаем</p>
+        <h2 class="reveal-up">Путь от идеи до открытия</h2>
+      </div>
+
+      <div class="stepper-wrap">
+      <div class="stepper-line" aria-hidden="true"><div class="stepper-line-fill" id="stepperFill"></div></div>
+      <ol class="stepper" id="stepper">
+        <li class="step reveal-up">
+          <span class="step-num">01</span>
+          <div class="step-body">
+            <h3>Заявка и диагностика</h3>
+            <p>Обсуждаем задачу, локацию и бюджет, формируем гипотезу концепции.</p>
+          </div>
+        </li>
+        <li class="step reveal-up">
+          <span class="step-num">02</span>
+          <div class="step-body">
+            <h3>Аналитика и концепция</h3>
+            <p>Исследование рынка, финансовая модель, согласование позиционирования.</p>
+          </div>
+        </li>
+        <li class="step reveal-up">
+          <span class="step-num">03</span>
+          <div class="step-body">
+            <h3>Проектирование</h3>
+            <p>Технологический проект, спецификация оборудования, инженерные разделы.</p>
+          </div>
+        </li>
+        <li class="step reveal-up">
+          <span class="step-num">04</span>
+          <div class="step-body">
+            <h3>Оснащение и поставка</h3>
+            <p>Контракты с фабриками, контроль качества, логистика и растаможка.</p>
+          </div>
+        </li>
+        <li class="step reveal-up">
+          <span class="step-num">05</span>
+          <div class="step-body">
+            <h3>Монтаж и обучение</h3>
+            <p>Пусконаладка, найм и обучение персонала, отработка стандартов сервиса.</p>
+          </div>
+        </li>
+        <li class="step reveal-up">
+          <span class="step-num">06</span>
+          <div class="step-body">
+            <h3>Запуск</h3>
+            <p>Открытие и сопровождение на первых месяцах операционной деятельности.</p>
+          </div>
+        </li>
+      </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow reveal-up">Вопросы</p>
+        <h2 class="reveal-up">Часто спрашивают</h2>
+      </div>
+
+      <div class="faq-list reveal-group">
+        <details class="faq-item reveal-up spotlight">
+          <summary>Сколько стоит открыть заведение под ключ?</summary>
+          <div class="faq-content"><p>Бюджет зависит от типа заведения, площади, класса и состояния помещения. На консультации мы формируем предварительный диапазон и детальную смету после техзадания.</p></div>
+        </details>
+        <details class="faq-item reveal-up spotlight">
+          <summary>Как устроена поставка оборудования из Китая?</summary>
+          <div class="faq-content"><p>Мы работаем по договору поручения: подбираем фабрику и проверяем её благонадёжность, согласовываем спецификацию товара, контролируем производство и организуем международную доставку до склада в Алматы. Все условия конкретного заказа фиксируются в спецификации к договору.</p></div>
+        </details>
+        <details class="faq-item reveal-up spotlight">
+          <summary>Сколько составляет агентское вознаграждение и что в него входит?</summary>
+          <div class="faq-content"><p>Агентское вознаграждение — 10% от стоимости товара по инвойсу производителя, фиксируется в спецификации к заказу. Оно покрывает подбор и проверку фабрики, сопровождение сделки, контроль качества и организацию логистики — отдельно от стоимости самого оборудования.</p></div>
+        </details>
+        <details class="faq-item reveal-up spotlight">
+          <summary>Как вы контролируете качество оборудования перед отправкой?</summary>
+          <div class="faq-content"><p>Перед отгрузкой мы проводим инспекцию на территории Китая: визуально проверяем состояние товара, комплектность, качество упаковки и маркировки, делаем подробную фото- и видеофиксацию, а где это возможно — тестовое включение. По итогам оформляется отчёт об инспекции.</p></div>
+        </details>
+        <details class="faq-item reveal-up spotlight">
+          <summary>Кто несёт гарантийные обязательства по оборудованию?</summary>
+          <div class="faq-content"><p>Гарантию предоставляет непосредственно завод-производитель в Китае согласно его технической документации. Мы берём на себя информационное и организационное сопровождение гарантийных обращений — вплоть до замены дефектных узлов.</p></div>
+        </details>
+        <details class="faq-item reveal-up spotlight">
+          <summary>Как устроена оплата — всё сразу или поэтапно?</summary>
+          <div class="faq-content"><p>На этапе подписания спецификации оплачивается 100% стоимости оборудования плюс агентское вознаграждение. Доставка из Китая оплачивается отдельно — по факту прибытия груза на склад в Алматы, перед выдачей товара.</p></div>
+        </details>
+        <details class="faq-item reveal-up spotlight">
+          <summary>Можно ли ознакомиться с договором заранее?</summary>
+          <div class="faq-content"><p>Да — типовой договор поручения на закупку из Китая доступен для скачивания в разделе «Оснащение» на этой странице. В нём подробно прописаны условия оплаты, контроля качества, логистики и ответственности сторон.</p></div>
+        </details>
+        <details class="faq-item reveal-up spotlight">
+          <summary>Можно ли заказать только часть услуг, например только оснащение?</summary>
+          <div class="faq-content"><p>Да, каждое направление — открытие под ключ, оснащение, аналитика, проектирование, операционный консалтинг — доступно как отдельная услуга.</p></div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CTA + FORM ============ -->
+  <section class="cta-section" id="contact">
+    <div class="wrap cta-wrap">
+      <div class="section-head section-head--light">
+        <p class="eyebrow reveal-up">Начнём</p>
+        <h2 class="reveal-up">Расскажите о проекте — рассчитаем шаги и бюджет</h2>
+      </div>
+
+      <div class="cta-grid">
+        <form class="lead-form reveal-up" id="leadForm" novalidate>
+          <div class="field">
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+7 (___) ___-__-__" required>
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="venue">Тип заведения</label>
+            <select id="venue" name="venue" required>
+              <option value="" disabled selected>Выберите вариант</option>
+              <option>Кофейня</option>
+              <option>Пекарня</option>
+              <option>Бистро</option>
+              <option>Ресторан полного цикла</option>
+              <option>Бар</option>
+              <option>Dark kitchen</option>
+            </select>
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="city">Город</label>
+            <input type="text" id="city" name="city" autocomplete="address-level2" required>
+            <span class="field-error" aria-live="polite"></span>
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" id="consent" name="consent" required>
+            <span>Согласен(-на) на обработку персональных данных</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary btn-lg form-submit">
+            <span class="btn-label">Отправить заявку</span>
+          </button>
+
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+
+        <div class="cta-alt reveal-up">
+          <p class="cta-alt-title">Или свяжитесь напрямую</p>
+          <a class="channel-btn spotlight spotlight--dark" href="https://wa.me/77020230000" target="_blank" rel="noopener">
+            <span class="channel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.6 6.3A8.9 8.9 0 0 0 3.1 15.9L2 21l5.2-1.4a8.9 8.9 0 0 0 4.3 1.1h0a8.9 8.9 0 0 0 6.1-15.4Zm-6.1 13.6h0a7.4 7.4 0 0 1-3.8-1l-.3-.2-2.8.8.8-2.7-.2-.3a7.4 7.4 0 1 1 13.8-3.7 7.4 7.4 0 0 1-7.5 7.1Zm4-5.5c-.2-.1-1.3-.6-1.5-.7-.2-.1-.4-.1-.5.1s-.6.7-.7.9-.3.2-.5.1a6 6 0 0 1-1.8-1.1 6.6 6.6 0 0 1-1.2-1.5c-.1-.2 0-.4.1-.5l.4-.4.2-.4a.4.4 0 0 0 0-.4c-.1-.1-.5-1.2-.7-1.7s-.4-.4-.5-.4h-.5a.9.9 0 0 0-.6.3 2.7 2.7 0 0 0-.8 2 4.7 4.7 0 0 0 1 2.5 10.7 10.7 0 0 0 4.1 3.6c.6.2 1 .4 1.4.5a3.3 3.3 0 0 0 1.5.1 2.5 2.5 0 0 0 1.6-1.1 1.9 1.9 0 0 0 .1-1.1c-.1-.1-.2-.2-.4-.3Z"/></svg>
+            </span>
+            WhatsApp
+          </a>
+          <a class="channel-btn spotlight spotlight--dark" href="https://t.me/+77020230000" target="_blank" rel="noopener">
+            <span class="channel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.6 18.7 20c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8L18 7.3c.4-.4-.1-.6-.6-.2L7 13.7l-4.7-1.5c-1-.3-1-1 .2-1.5L20.6 3.7c.9-.3 1.6.2 1.3 1Z"/></svg>
+            </span>
+            Telegram
+          </a>
+          <a class="channel-btn spotlight spotlight--dark" href="tel:+77020230000">
+            <span class="channel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15.9 15.9 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.3 11 11 0 0 0 3.5.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11 11 0 0 0 .6 3.5 1 1 0 0 1-.3 1Z"/></svg>
+            </span>
+            +7 (702) 023-00-00
+          </a>
+          <a class="channel-btn spotlight spotlight--dark" href="mailto:andamassov@yahoo.com">
+            <span class="channel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            andamassov@yahoo.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <a href="#top" class="brand brand--footer">
+      <img src="assets/img/logo.jpg" alt="Gastro Ultima" class="brand-logo">
+      <span class="brand-word">gastro <em>ultima</em><span class="brand-dot">.</span></span>
+    </a>
+
+    <nav aria-label="Навигация в подвале">
+      <ul class="footer-nav">
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#sourcing">Оснащение</a></li>
+        <li><a href="#process">Процесс</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Контакты</a></li>
+      </ul>
+    </nav>
+
+    <!-- TODO: добавить ссылку на Instagram, когда появится аккаунт -->
+    <div class="footer-social">
+      <a href="#" aria-label="Instagram">Instagram</a>
+      <a href="https://wa.me/77020230000" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+      <a href="https://t.me/+77020230000" target="_blank" rel="noopener" aria-label="Telegram">Telegram</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>© <span id="year"></span> ИП «GASTRO ULTIMA», БИН 020912650949 · +7 (702) 023-00-00 · andamassov@yahoo.com</p>
+    <button class="reduced-toggle" id="reducedToggle" type="button" aria-pressed="false">Облегчённый режим</button>
+  </div>
+</footer>
+
+<script src="scripts/main.js" defer></script>
+</body>
+</html>
